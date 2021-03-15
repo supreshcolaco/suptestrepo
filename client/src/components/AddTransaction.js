@@ -18,11 +18,10 @@ export const AddTransaction = () => {
         e.preventDefault();
 
         const newTransaction = {
-            id: Math.floor(Math.random() * 100000000),
-            text,
+            description: text,
             amount: +amount,
             user_name: transactionUser,
-            date: moment(transactionDate).format('DD-MM-YYYY')
+            date: moment(transactionDate).format('YYYY-MM-DD[T00:00:00.000Z]')
         }
 
         addTransaction(newTransaction);

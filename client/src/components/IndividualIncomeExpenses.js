@@ -21,8 +21,8 @@ export const IndividualIncomeExpenses = () => {
     const { transactions } = useContext(GlobalContext);
     const amounts = transactions.map(transaction => transaction.amount);
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
-    const amountsSeldon = transactions.filter(transaction => transaction.user_name == 'Seldon').map(transaction => transaction.amount);
-    const amountsLester = transactions.filter(transaction => transaction.user_name == 'Lester').map(transaction => transaction.amount);
+    const amountsSeldon = transactions.filter(transaction => transaction.user_name === 'Seldon').map(transaction => transaction.amount);
+    const amountsLester = transactions.filter(transaction => transaction.user_name === 'Lester').map(transaction => transaction.amount);
     const profitShare = (total / 2).toFixed(2);
     const incomeSeldon = amountsSeldon
         .filter(item => item > 0)
