@@ -14,12 +14,17 @@ export default (state, action) => {
         case 'ADD_TRANSACTION':
             return {
                 ...state,
-                transactions: [action.payload, ...state.transactions]
+                transactions: [...state.transactions, action.payload]
             }
         case 'TRANSACTION_ERROR':
             return {
                 ...state,
                 error: action.payload
+            }
+        case 'SET_TRANSACTION_KEY':
+            return {
+                ...state,
+                transaction_key: action.payload
             }
         default:
             return state;

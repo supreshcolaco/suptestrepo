@@ -6,7 +6,8 @@ import axios from 'axios';
 const initalState = {
     transactions: [],
     error: null,
-    loading: true
+    loading: true,
+    transaction_key: ''
 }
 
 // Create Context
@@ -34,9 +35,14 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-    async function deleteTransaction(id) {
+    async function deleteTransaction(id, transaction_key) {
+        const config = {
+            headers: {
+                'trans-key': transaction_key
+            }
+        }
         try {
-            await axios.delete(`/transactions/${id}`);
+            await axios.delete(`/transactions/${id}`, config);
 
             dispatch({
                 type: 'DELETE_TRANSACTION',
@@ -50,10 +56,11 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-    async function addTransaction(transaction) {
+    async function addTransaction(transaction, transaction_key) {
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'trans-key': transaction_key
             }
         }
 
@@ -71,13 +78,22 @@ export const GlobalProvider = ({ children }) => {
             });
         }
     }
+
+    function setTransactionKey(transaction_key) {
+        dispatch({
+            type: 'SET_TRANSACTION_KEY',
+            payload: transaction_key
+        });
+    }
     return (<GlobalContext.Provider value={{
         error: state.error,
         loading: state.loading,
         transactions: state.transactions,
+        transaction_key: state.transaction_key,
         deleteTransaction,
         addTransaction,
-        getTransactions
+        getTransactions,
+        setTransactionKey
     }}>
         {children}
     </GlobalContext.Provider>);

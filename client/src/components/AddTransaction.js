@@ -12,7 +12,7 @@ export const AddTransaction = () => {
     const [amount, setAmount] = useState(0);
     const [transactionDate, setTransactionDate] = useState(new Date());
     const [transactionUser, setTransactionUser] = useState('');
-    const { addTransaction } = useContext(GlobalContext);
+    const { addTransaction, transaction_key, setTransactionKey } = useContext(GlobalContext);
 
     const onSubmit = e => {
         e.preventDefault();
@@ -24,7 +24,7 @@ export const AddTransaction = () => {
             date: moment(transactionDate).format('YYYY-MM-DD[T00:00:00.000Z]')
         }
 
-        addTransaction(newTransaction);
+        addTransaction(newTransaction, transaction_key);
     }
     return (
         <div>
@@ -59,8 +59,12 @@ export const AddTransaction = () => {
                         </select>
                     </div>
                 </div>
+                <div className="form-control">
+                    <label htmlFor="trans_key">Transaction Key</label>
+                    <input type="text" onChange={(e) => setTransactionKey(e.target.value)} placeholder="Enter text..." />
+                </div>
                 <button className="btn" >Add transaction</button>
             </form>
-        </div>
+        </div >
     )
 }

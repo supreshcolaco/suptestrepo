@@ -66,6 +66,7 @@ module.exports.post = (async function (req, res) {
 
 module.exports.delete = (async function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
+    console.log('trans-key==>', req.headers['trans-key']);
     try {
         const transaction = await transactiondata.findById(req.params.id);
 
