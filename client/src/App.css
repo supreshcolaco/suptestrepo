@@ -20,8 +20,7 @@ body {
 }
 
 .container {
-  margin: 30px auto;
-  width: 650px;
+  width: 80%;
 }
 
 h1 {
@@ -174,4 +173,9 @@ select {
   line-height: 1.1;
   background-color: #fff;
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.logo{
+  width: 210px;
+  height: 160px;
 }
