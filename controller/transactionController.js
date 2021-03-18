@@ -42,7 +42,7 @@ module.exports.post = (async function (req, res) {
         });
     } catch (err) {
         if (err.name === 'ValidationError') {
-            const messages = Object.values(err.errors).map(val => val.message);
+            const messages = Object.values(err.errors).map(val => val.message).join(',');
 
             return res.status(400).json({
                 success: false,

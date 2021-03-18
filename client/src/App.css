@@ -181,7 +181,14 @@ select {
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
 
-.logo{
+.logo {
   width: 210px;
   height: 160px;
+}
+
+.alert p {
+  margin: 0;
+}
+.alert-error {
+  background: lightcoral;
 }

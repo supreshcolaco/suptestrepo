@@ -8,7 +8,7 @@ var transactionschema = mongoose.Schema(
 
         user_name: { type: String, required: [true, "please add name"] },
         amount: { type: Number, required: [true, "please enter amount"] },
-        description: { type: String },
+        description: { type: String, required: [true, "please enter description"] },
         date: {
             type: Date, default: Date.now
         }
