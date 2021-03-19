@@ -6,7 +6,11 @@ var transactiondata = require('../model/transactionschema')
 module.exports.get = (async function (req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     try {
-        const transactions = await transactiondata.find();
+        $filterClause = {};
+        if (req.query.startDate && req.query.endDate) {
+            $filterClause = { "date": { "$gte": req.query.startDate, "$lt": req.query.endDate } };
+        }
+        const transactions = await transactiondata.find($filterClause);
 
         return res.status(200).json({
             success: true,

@@ -27,7 +27,7 @@ export const Balance = () => {
                 dateFormat="MM/yyyy"
                 showMonthYearPicker
             />
-            <h4>Current Balance For Month</h4>
+            <h4>Current Balance For Month of {moment(currentMonthYear).format('MMMM-YYYY')}</h4>
             <h1 id="balance">₹{total}</h1>
         </>
     )
