@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Transaction } from './Transaction';
+import moment from 'moment';
 
 export const TransactionList = () => {
     const { transactions, getTransactions, error } = useContext(GlobalContext);
     useEffect(() => {
-        getTransactions();
+        let monthStart = moment(new Date()).clone().startOf('month').format('YYYY-MM-DD[T00:00:00.000Z]');
+        let monthEnd = moment(new Date()).clone().endOf('month').format('YYYY-MM-DD[T00:00:00.000Z]');
+        getTransactions(monthStart, monthEnd);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     let FlashMessage;

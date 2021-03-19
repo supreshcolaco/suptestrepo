@@ -19,9 +19,9 @@ export const GlobalProvider = ({ children }) => {
 
     //Actions
     // Actions
-    async function getTransactions() {
+    async function getTransactions(monthStart, monthEnd) {
         try {
-            const res = await axios.get('/transactions');
+            const res = await axios.get('/transactions?startDate=' + monthStart + '&endDate=' + monthEnd);
 
             dispatch({
                 type: 'GET_TRANSACTIONS',
