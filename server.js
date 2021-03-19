@@ -9,10 +9,12 @@ const app = express()
 app.use(cors())
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
+app.key=process.env.MASTERKEY
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
+
 
 require('./db.js')
 require('./routes/transactions')(app)
