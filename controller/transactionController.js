@@ -8,7 +8,7 @@ module.exports.get = (async function (req, res) {
     try {
         $filterClause = {};
         if (req.query.startDate && req.query.endDate) {
-            $filterClause = { "date": { "$gte": req.query.startDate, "$lt": req.query.endDate } };
+            $filterClause = { "date": { "$gte": req.query.startDate, "$lte": req.query.endDate } };
         }
         const transactions = await transactiondata.find($filterClause);
 
